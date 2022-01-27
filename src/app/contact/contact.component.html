@@ -1,0 +1,38 @@
+<h2>Me contacter</h2>
+<div *ngIf="submit === true && invalid === true" class="alert alert-danger">
+    <p>Le formulaire est mal rempli.</p>
+</div>
+<div *ngIf="submit === true && invalid === false" class="alert alert-success">
+    <p>Le commentaire a bien été enregistré.</p>
+</div>
+<form action="" method="post" class="form">
+    <div class="form__group">
+        <label for="pseudo">Votre nom</label>
+        <input type="text" name="pseudo" id="pseudo" class="form__input" [formControl]="name">
+        <div *ngIf="name.invalid" class="form__help">
+            Le nom doit faire au moins 5 caractères
+        </div>
+    </div>
+    <div class="form__group">
+        <label for="pseudo">Votre email</label>
+        <input type="email" name="pseudo" id="pseudo" class="form__input" [formControl]="email">
+        <div *ngIf="email.invalid" class="form__help">
+            Vous devez saisir un email valide, par exemple nom@domaine.fr
+        </div>
+    </div>
+    <div class="form__group">
+        <label for="pseudo">Le sujet du message</label>
+        <input type="text" name="pseudo" id="pseudo" class="form__input" [formControl]="subject">
+        <div *ngIf="subject.invalid" class="form__help">
+            Le sujet doit faire au moins 5 caractères
+        </div>
+    </div>
+    <div class="form__group">
+        <label for="content">Votre commentaire</label>
+        <textarea name="content" id="content" cols="30" rows="10" [formControl]="content"></textarea>
+        <div *ngIf="content.invalid" class="form__help">
+            Le message doit faire au moins 10 caractères
+        </div>
+    </div>
+    <button class="btn-default" (click)="onSubmit($event)">Envoyer</button>
+</form>

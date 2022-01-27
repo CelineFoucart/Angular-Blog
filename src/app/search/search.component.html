@@ -1,0 +1,25 @@
+<section class="index">
+    <h2 class="index__title">Rechercher un article</h2>
+    <form action="" method="get">
+        <div class="form__group">
+            <input 
+                type="text" 
+                name="q" 
+                id="q" 
+                class="form__input" 
+                [formControl]="search" 
+                placeholder="rechercher un article..."
+            />
+            <div *ngIf="search.invalid" class="form__help">
+                La recherche doit faire au moins 3 caractères
+            </div>
+        </div>
+        <button class="btn-secondary" (click)="onSubmit($event)">Envoyer</button>
+    </form>
+
+    <div class="alert alert-danger" *ngIf="!success">
+        <p>La recherche n'a rien donné</p>
+    </div>
+
+    <app-show *ngFor="let post of posts" [post]="post" [withComment]="false"></app-show>
+</section>

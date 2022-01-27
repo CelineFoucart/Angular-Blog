@@ -1,0 +1,4 @@
+<section class="index">
+    <h2 class="index__title">Voir les articles</h2>
+    <app-show *ngFor="let post of posts" [post]="post" [withComment]="false"></app-show>
+</section>

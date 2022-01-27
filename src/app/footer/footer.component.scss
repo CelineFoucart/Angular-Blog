@@ -1,0 +1,16 @@
+.footer {
+    background-color: #333;
+    color: darken(#FFF, 10%);
+    text-align: center;
+    padding: 40px;
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            color: darken(#FFF, 25%);
+        }
+    }
+}

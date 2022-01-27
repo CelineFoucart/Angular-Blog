@@ -1,0 +1,37 @@
+@mixin generate-alerts($alert-syles:$alerts) {
+    @each $key, $value in $alert-syles {
+        &-#{$key} {
+            color: map-get($value, "color");
+            background-color: map-get($value, "bgc");
+            border-color: map-get($value, "border-color");
+        }
+    }
+}
+
+@mixin generate-buttons() {
+    $colors: (
+        "default": ("bgc": $third-color, "color":$secondary-color), 
+        "secondary": ("bgc": $secondary-color, "color": $primary-color)
+    );
+
+    @each $key, $value in $colors {
+        &-#{$key} {
+            border: 1px solid map-get($value, "bgc");
+            padding: 5px 30px;
+            border-radius: 5px;
+            background-color: map-get($value, "bgc");
+            font-size: inherit;
+            color: map-get($value, "color");
+            font-size: .9rem;
+            display: block;
+            margin: 10px 0;
+            transition: all .3s ease-in-out;
+            width: 150px;
+            cursor: pointer;
+
+            &:hover {
+                width: calc(150px * 1.05);
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<header class="header">
+    <nav class="header__nav" role="main navigation">
+        <a routerLink="" class="header__nav__brand">Les mondes d'Ermina</a>
+        <ul class="header__nav__list">
+            <li class="header__nav__item">
+                <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+            </li>
+            <li class="header__nav__item">
+                <a routerLink="posts" routerLinkActive="active">Articles</a>
+            </li>
+            <li class="header__nav__item">
+                <a routerLink="contact" routerLinkActive="active">Contact</a>
+            </li>
+            <li class="header__nav__item">
+                <a routerLink="search" routerLinkActive="active">Recherche</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="header__title">
+        <h1>Les mondes d'Ermina</h1>
+        <p>Bienvenue sur mon blog de lecture et d'écriture</p>
+    </div>
+</header>

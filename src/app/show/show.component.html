@@ -1,0 +1,50 @@
+<div class="alert alert-danger" *ngIf="notFound === true">
+    <p>Cet article n'existe pas</p>
+</div>
+
+<article *ngIf="notFound === false" class="post">
+    <header class="post__header">
+        <h2>
+            <a [routerLink]="['/posts/', post.id]" *ngIf="withComment === false; else noLink">
+                {{ post.title }}
+            </a>
+        </h2>
+        <ng-template #noLink>
+            {{ post.title }}
+        </ng-template>
+        <p>{{ post.excerpt }}</p>
+    </header>
+    <p>{{ post.content }}</p>
+    <footer class="post__footer">
+        <p>
+            <span class="post__footer__label">Auteur : </span>
+            {{ post.author.pseudo }}
+        </p>
+        <p>
+            <span class="post__footer__label">Publication : </span> 
+            {{ post.date | date: 'd/MM/yy à HH:mm' }}
+        </p>
+        <p>
+            <span class="post__footer__label">Catégories : </span> 
+            <a [routerLink]="['/category', post.category.id]">{{ post.category.name }}</a>
+        </p>
+    </footer>
+</article>
+
+<article *ngIf="withComment">
+    <h2>{{totalComments}} commentaire(s)</h2>
+    <div class="comments__group" *ngIf="totalComments > 0; else empty">
+        <div class="comment" *ngFor="let comment of post.comments">
+            <h3 class="comment__author">{{ comment.author }}</h3>
+            <p class="comment__date">Publié le {{ comment.date | date:"dd/MM/yy à HH:mm" }}</p>
+            <p class="comment__body">{{ comment.content }}</p>
+        </div>
+    </div>
+    <ng-template #empty>
+        <div class="empty">
+            <p>Soyez le premier à poster un commentaire</p>
+        </div>
+    </ng-template>
+
+    <app-comment-form [postId]="post.id"></app-comment-form>
+</article>
